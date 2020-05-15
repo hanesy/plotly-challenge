@@ -1,0 +1,111 @@
+html {
+  padding: 25px 25px;
+}
+
+body {
+  margin: 30px;
+  color: #3C5973;
+}
+
+.navbar{
+  background:#F2F2F2;
+  border: 2px solid gray;
+}
+
+.container {
+  padding: 5px;
+}
+
+.topBanner{
+  margin: 10px;
+}
+
+.topBanner em {
+  color: #3E939E;
+}
+
+.mainBar{
+  background: #e5e5e5;
+  text-align: left;
+  margin: 10px;
+}
+
+.mainBar em {
+  color: #3E939E;
+  font-weight: bolder;
+}
+
+.mainBar img {
+  border: 3px solid #fff;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 100%;
+}
+
+.secondBar{
+  background: #F2F2F2;
+  text-align: left;
+  margin: 10px;
+}
+
+.secondBar img {
+  border: 3px solid #fff;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 100%;
+}
+
+.about {
+  border: 1px solid #fff;
+}
+
+#center{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#timelineChart_hc {
+  position: relative;
+  width: 100% !important;
+  margin-bottom: 15px;
+}
+
+#MBTI {
+  position: relative;
+  width: 100% !important;
+  margin-bottom: 15px;
+}
+
+#enneagram {
+  position: relative;
+  width: 100% !important;
+  margin-bottom: 15px;
+}
+
+#footer {
+  margin: 0px;
+  text-align: center;
+  font-size: 80%;
+}
+
+#footer div{
+  margin: 20px;
+}
+
+.card {
+    font-size: 80%;
+    margin: 2px;
+}
+
+.btn{
+    margin: 2px;
+    width: 45%;
+    background: #3E939E;
+    border: none;
+    font-size: 90%;
+}
+
+p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

@@ -1,6 +1,6 @@
 function init() {
   // default dashboard
-  d3.json("samples.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/hanesy/plotly-challenge/master/data/samples.json").then((data) => {
     console.log ('entire data');
     console.log(data);
 
