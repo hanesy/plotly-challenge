@@ -12,8 +12,9 @@ body {
   border: 2px solid gray;
 }
 
-.container {
+.container-fluid {
   padding: 5px;
+  margin: 0px;
 }
 
 .topBanner{
