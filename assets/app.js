@@ -1,6 +1,8 @@
+var source = "https://raw.githubusercontent.com/hanesy/plotly-challenge/master/data/samples.json";
+
 function init() {
   // default dashboard
-  d3.json("https://raw.githubusercontent.com/hanesy/plotly-challenge/master/data/samples.json").then((data) => {
+  d3.json(source).then((data) => {
     console.log ('entire data');
     console.log(data);
 
@@ -178,7 +180,7 @@ function demoPanel(personID, ethnicity, gender, age, location, bbtype, wfreq){
 function optionChanged(option_index) {
   console.log (`Updated option index: ${option_index}`);
 
-  d3.json("samples.json").then((data) => {
+  d3.json("https://raw.githubusercontent.com/hanesy/plotly-challenge/master/data/samples.json").then((data) => {
     // select data and choose individual by index
     // loads in the same order as the createDropDown()
     var sampleData = data.samples;
@@ -211,7 +213,7 @@ function optionChanged(option_index) {
 }  
 
 function updateCharts(otu_ids, samp_values, otu_labs, wfreq) {
-  d3.json("samples.json").then((data) => {
+  d3.json(source).then((data) => {
     var otu_id_ten = otu_ids.slice(0,10);
     var sample_values_ten = samp_values.slice(0,10);
     var otu_labs_ten = otu_labs.slice(0,10);
