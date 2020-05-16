@@ -5,50 +5,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bellybutton Biodiversity</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <!-- Libs -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- End libs -->
+
+  <link rel="stylesheet" href="assets/style.css">
+  <title>HY - Biodiversity Dashboard</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="https://hanesy.github.io/">HY</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/">home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/about">about me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/personality">personality</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/resume">resume</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="https://hanesy.github.io/projects"> see all projects </a>
+        </li>
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            featured projects
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item active" href="https://hanesy.github.io/plotly-challenge/" target="_blank">Biodiversity Dashboard</a>
+            <a class="dropdown-item" href="https://public.tableau.com/profile/heain#!/vizhome/Tableau-Challenge_15863863626670/StoryBoard" target="_blank"> CitiBike Ridership</a>
+            <a class="dropdown-item" href="https://icma.org/articles/doing-data-right" target="_blank"> Doing Data Right</a>
+            <a class="dropdown-item" href="https://hanesy.github.io/D3-challenge/" target="_blank">Health and Demographic in US States</a>
+            <a class="dropdown-item" href="https://hanesy.github.io/leaflet-challenge/" target="_blank"> Mapping Earthquakes</a>
+            <a class="dropdown-item" href="https://olympics-dash.herokuapp.com/" target="_blank"> Olympics Dashboard</a>
+            <a class="dropdown-item" href="https://hanesy.github.io/NBA_Playoffs/" target="_blank"> Predicting NBA Playoffs</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Belly Button Biodiversity Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
-        <p>Heain Yee - March 2020</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Test Subject ID No.:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Demographic Info</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body">
-          </div>
+
+      <div class="row topBanner">
+        <div class="col-md-12 text-center" ><h1 class>Biodiversity Dashboard</h1>
+          <article>Heain Yee - March 2020</article>
+          <article><i>Interactive dashboard to explore the <a href= "http://robdunnlab.com/projects/belly-button-biodiversity/" target = "_blank">Belly Button Biodiversity dataset</a>, which catalogs the microbes that colonize human navels.</i></article>
         </div>
       </div>
-      <div class="col-md-5">
-        <div id="bar"></div>
+
+      <div class="row mainBar">
+        <div class="col-md-3 text-left">
+            <h3>Test Subject ID Number:</h3>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            <p>OTU: Operational Taxonomic Units</p>
+        </div>
+        <div class="col-md-9 text-left outline">
+          <div class = "row mainBar">
+            <div class="col-md-12 text-left">
+              <h3>Demographic Info</h3>
+            </div> 
+          </div>
+          <div class = "row mainBar">
+            <div class="col-md-6 text-left"><div id="sample-metadata2" class="panel-body"></div></div>
+            <div class="col-md-6 text-left"><div id="sample-metadata3" class="panel-body"></div></div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-5">
+           
+  
+
+    <div class="row secondBar">
+
+      <div class="col-md-3" id = "center">
         <div id="gauge"></div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
+
+      <div class="col-md-6" id = "center">
         <div id="bubble"></div>
       </div>
-    </div>
-  </div>
+      
+      <div class="col-md-3" id = "center">
+        <div id="bar"></div>
+      </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </div>
+
+  </div>
+  
+  <footer id="footer">
+    <div style = "display: inline-block"><a href="https://github.com/hanesy" target="_blank" ><img src="/assets/images/gh.png" height = '40' alt=""><br>Github</a></div>
+    <div style = "display: inline-block"><a href="https://www.linkedin.com/in/heain-yee-82105818/" target="_blank"><img src="/assets/images/li.png" height = '40' alt=""><br>LinkedIn</a></div>
+    <div style = "display: inline-block"><a href="mailto: heainyee@gmail.com" target="_blank"><img src="/assets/images/email.png" height = '40' alt=""><br>Email</a></div>
+  </footer>
+
   <script src="assets/app.js"></script>
   <!-- <script src="./static/js/bonus.js"></script> -->
 

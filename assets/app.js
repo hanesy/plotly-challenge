@@ -76,7 +76,9 @@ function firstCharts(otu_ids, samp_values, otu_labs, wfreq){
   var dataH = [traceH];
 
   var layoutH = {
-    title: "Top 10 <br> operational taxonomic units (otu) <br> by sample size",
+    autosize: true,
+    width:  $("#bar").width(),
+    title: "Top 10 OTU <br> by sample size",
     yaxis: {
     //  https://stackoverflow.com/questions/46201532/plotly-js-reversing-the-horizontal-bar-chart-in-plotly
       autorange: "reversed",
@@ -102,14 +104,15 @@ function firstCharts(otu_ids, samp_values, otu_labs, wfreq){
   var dataB = [traceB];
   
   var layoutB = {
-    title: ' Operational taxonomic units (otu) <br> by sample size',
+    autosize: true,
+    width:  $("#bubble").width(),
+    title: 'OTU <br> by sample size',
     xaxis:{
-      title: 'Operational Taxonomic Unit (otu) ID'
+      title: 'OTU ID'
     },
     yaxis: {
       title: 'Value'
     },
-    height: 500,
   };
   
   Plotly.newPlot('bubble', dataB, layoutB);
@@ -120,7 +123,7 @@ function firstCharts(otu_ids, samp_values, otu_labs, wfreq){
     {
       domain: { x: [0, 1], y: [0, 1] },
       value: wfreq,
-      title: { text: "Belly Button Washing Frequency per Week" },
+      title: { text: "Belly Button Washing <br> Frequency per Week", font: { size: 16 } },
       type: "indicator",
       mode: "gauge+number",
   
@@ -143,22 +146,33 @@ function firstCharts(otu_ids, samp_values, otu_labs, wfreq){
       }
     ];
   
-    var layoutG = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+  var layoutG = {
+    // autosize: true,
+    width:  $("#gauge").width(),
+    // height:  $("#gauge").width()/1.5,
+    margin: { t: 60, b: 0 } 
+  };
   
     Plotly.newPlot('gauge', dataG, layoutG);
 }
 
 function demoPanel(personID, ethnicity, gender, age, location, bbtype, wfreq){ 
   console.log("creating demo panel")
-  var metapanel = d3.select ("#sample-metadata");
-  metapanel.text("");
-  metapanel.append("p").attr("value", "id").text(`id: ${personID}`);
-  metapanel.append("p").attr("value", "ethnicity").text(`ethnicity: ${ethnicity}`);
-  metapanel.append("p").attr("value", "gender").text(`gender: ${gender}`);
-  metapanel.append("p").attr("value", "age").text(`age: ${age}`);
-  metapanel.append("p").attr("value", "location").text(`location: ${location}`);
-  metapanel.append("p").attr("value", "bbtype").text(`bbtype: ${bbtype}`);
-  metapanel.append("p").attr("value", "wfreq").text(`wfreq: ${wfreq}`);
+  // var metapanel1 = d3.select ("#sample-metadata1");
+  // metapanel1.text("");
+  // metapanel1.append("p").attr("value", "id").text(`ID: ${personID}`);
+
+  var metapanel2 = d3.select ("#sample-metadata2");
+  metapanel2.text("");
+  metapanel2.append("p").attr("value", "ethnicity").text(`Ethnicity: ${ethnicity}`);
+  metapanel2.append("p").attr("value", "gender").text(`Gender: ${gender}`);
+  metapanel2.append("p").attr("value", "age").text(`Age: ${age}`);
+
+  var metapanel3 = d3.select ("#sample-metadata3");
+  metapanel3.text("");
+  metapanel3.append("p").attr("value", "location").text(`Location: ${location}`);
+  metapanel3.append("p").attr("value", "bbtype").text(`Belly Buttontype: ${bbtype}`);
+  metapanel3.append("p").attr("value", "wfreq").text(`Wash Frequency per Week: ${wfreq}`);
 }
 
 function optionChanged(option_index) {
@@ -226,3 +240,4 @@ function updateCharts(otu_ids, samp_values, otu_labs, wfreq) {
 
 init();
 
+window.addEventListener('resize', init);

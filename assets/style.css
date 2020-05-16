@@ -55,7 +55,7 @@ body {
   max-width: 100%;
 }
 
-.about {
+.outline {
   border: 1px solid #fff;
 }
 
@@ -64,23 +64,24 @@ body {
   margin-bottom: auto;
 }
 
-#timelineChart_hc {
+#bar {
   position: relative;
-  width: 100% !important;
-  margin-bottom: 15px;
+  height: 100% !important;
+  margin: 10px;
 }
 
-#MBTI {
+#gauge {
   position: relative;
-  width: 100% !important;
-  margin-bottom: 15px;
+  height: 100% !important;
+  margin: 10px;
 }
 
-#enneagram {
+#bubble {
   position: relative;
-  width: 100% !important;
-  margin-bottom: 15px;
+  height: 100% !important;
+  margin: 10px;
 }
+
 
 #footer {
   margin: 0px;
